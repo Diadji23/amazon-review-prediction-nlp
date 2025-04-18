@@ -29,14 +29,6 @@ Il utilise des techniques de traitement du langage naturel (NLP) et de machine l
 
 ---
 
-##  Résultats – Classification tri-classe (SVM)
-
-| Classe   | Précision | Rappel | F1-score |
-|----------|-----------|--------|----------|
-| Négatif  | 0.72      | 0.67   | 0.70     |
-| Neutre   | 0.56      | 0.09   | 0.16     |
-| Positif  | 0.89      | 0.97   | 0.93     |
-| **Accuracy globale** | –     | –       | **0.86** |
 
 ---
 
