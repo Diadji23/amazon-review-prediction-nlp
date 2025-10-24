@@ -19,11 +19,25 @@ def train_pipeline(data_path: str, save_dir: str = 'models'):
     print("="*60)
     
     # data loading 
-    print("\n[1/5] Loading ...")
+    print("\n[1/5] Loading data ...")
     df = pd.read_csv(data_path)
-    texts = df['review'].tolist()
-    labels = df['sentiment'].tolist()  # 0=negative, 1=positive
+    texts = df['Text'].tolist()
+    scores = df['Score'].tolist()  # 1 to 5
+
+    #
+    filtered_texts = []
+    labels = []
     
+    for text, score in zip(texts, scores):
+        if score in [1, 2]:  # Negative
+            filtered_texts.append(text)
+            labels.append(0)
+        elif score in [4, 5]:  # Positive
+            filtered_texts.append(text)
+            labels.append(1)
+        # Score 3 = neutral
+    
+    texts = filtered_texts
     
     # Preprocessing
     print("\n[2/5]text Preprocessing...")
@@ -66,4 +80,4 @@ def train_pipeline(data_path: str, save_dir: str = 'models'):
 
 
 if __name__ == "__main__":
-    train_pipeline(data_path="data/reviews.csv")
+    train_pipeline(data_path="data/Reviews.csv")
